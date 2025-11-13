@@ -45,6 +45,11 @@ on:
         required: true
         type: boolean
         default: true
+      BBG:
+        description: '传递给子工作流的 BBG 参数'
+        required: true
+        type: boolean
+        default: false
 jobs:
 
   build-kernel-a14-6-1:
@@ -57,9 +62,11 @@ jobs:
       version: ${{ inputs.version }}
       use_zram: ${{ inputs.use_zram }}
       use_kpm: ${{ inputs.use_kpm }}
+      BBG: ${{ inputs.BBG }}
   get-ksu-manager:
     if: ${{ inputs.get_manager }}
     uses: ./.github/workflows/get-manager.yml
     secrets: inherit
     with:
       kernelsu_variant: ${{ inputs.kernelsu_variant }}
+
