@@ -50,9 +50,14 @@ on:
         required: true
         type: boolean
         default: true
+      BBG:
+        description: 'BBG参数'
+        required: true
+        type: string
+        default: ''
 jobs:
 
- build-kernel-a15-6-6:
+  build-kernel-a15-6-6:
     uses: ./.github/workflows/kernel-a15-6.6.yml
     secrets: inherit
     with:
@@ -63,7 +68,8 @@ jobs:
       use_zram: ${{ inputs.use_zram }}
       use_kpm: ${{ inputs.use_kpm }}
       supp_op: ${{ inputs.supp_op }}
- get-ksu-manager:
+      BBG: ${{ inputs.BBG }}
+  get-ksu-manager:
     if: ${{ inputs.get_manager }}
     uses: ./.github/workflows/get-manager.yml
     secrets: inherit
