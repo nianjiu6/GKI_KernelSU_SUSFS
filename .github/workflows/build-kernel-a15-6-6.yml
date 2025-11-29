@@ -51,10 +51,10 @@ on:
         type: boolean
         default: true
       BBG:
-        description: 'BBG参数'
-        required: true
-        type: string
-        default: ''
+        description: 'BBG参数（如不确定请保持默认）'
+        required: false
+        type: boolean
+        default: false
 jobs:
 
   build-kernel-a15-6-6:
